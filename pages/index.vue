@@ -14,22 +14,19 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Todo from "../models/Todo";
 
+let defaultTodo = {
+  name: '',
+  done: false
+};
+
 @Component
 export default class Index extends Vue {
   todos: Array<Todo> = [];
-
-  newTodo: Todo = {
-    name: '',
-    done: false
-  };
+  newTodo: Todo = {...defaultTodo};
   
   addTodo () {
     this.todos.push(this.newTodo);
-
-    this.newTodo = {
-      name: '',
-      done: false
-    };
+    this.newTodo = {...defaultTodo};
   }
 
   removeTodo (index) {
